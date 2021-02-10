@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <link href="styles.css" rel="stylesheet">
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body>
+  <div id="app" class="flex justify-center item-center space-x-3 mb-20">
+    <div class="card p-3">
+      <h1 class="font-bold text-3xl text-pink-600 text-center">BLACKPINK gallery ({{countPic}}) </h1>
+
+      <div v-for="(image,index) in tasks" class="text-center object-center">
+        <div class="flex ml-96">
+          <img v-bind:src="image.url" class="mt-16 rounded shadow-xl transition duration-700 ease-in-out transform hover:-translate-y-1 hover:scale-110" width="350">
+          <p class="font-semibold ml-10 mt-16 text-red-400 text-opacity-75 text-2xl">{{image.title}}</p>
+          <p class="font-semibold -ml-6 mr-96 mt-28 text-gray-400 text-sm">{{image.detail}}</p>
+        </div>
+        <div class="-mt-10 ml-20">
+          <span v-on:click="toggleDone(index)" class="material-icons cursor-pointer border-none">
+            favorite_border
+            <img v-show="image.done" src="./images/5.png" class="w-6 h-6 -mt-6">
+          </span>
+          <p class="-mt-7 ml-16">{{image.count}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+</html>
